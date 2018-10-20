@@ -25,14 +25,14 @@ title: Posts
  <!-- pagination -->
   <ul class="pagination">
     <li><a href="{{ paginator.previous_page_path }}" class="button {% unless paginator.previous_page %}disabled{% endunless %}">Prev</a></li>
-    <li><a href="/blog/index.html" class="page {% if 1 == paginator.page %}active{% endif %}">1</a></li>
+    <li><a href="{{ "blog/index.html" | relative_url }}" class="page {% if 1 == paginator.page %}active{% endif %}">1</a></li>
   {% if paginator.total_pages <= 10 %}
     {% for p in (2..paginator.total_pages) %}
-       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+       <li><a href="{{ "blog/page" | relative_url | append: p | append: "/index.html" }}" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
     {% endfor %}
   {% else %}
     {% for p in (2..4) %}
-       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+       <li><a href="{{ "blog/page" | relative_url | append: p | append: "/index.html" }}" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
     {% endfor %}
     <li><span>&hellip;</span></li>
     {% assign startLimit =  paginator.total_pages %}
@@ -41,7 +41,7 @@ title: Posts
     {% decrement startLimit %}
     {% decrement startLimit %}
     {% for p in (startLimit..paginator.total_pages) %}
-       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+       <li><a href="{{ "blog/page" | relative_url | append: p | append: "/index.html" }}" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
     {% endfor %}
   {% endif %}
   <li><a href="{{ paginator.next_page_path }}" class="button {% unless paginator.next_page %}disabled{% endunless %}">Next</a></li>
