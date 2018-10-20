@@ -1,0 +1,20 @@
+---
+layout: default
+---
+               <section>
+									<header class="main">
+										<h1>{{ page.title }}</h1>
+									</header>
+
+              {% if page.head_image %}
+									<span class="image main"><img src="{{ page.head_image }}" alt="" /></span>
+              {% endif %}
+
+                 {{ content }}
+							</section>
+
+<!--
+									<hr class="major" />
+
+									<h2>Interdum sed dapibus</h2>
+									-->

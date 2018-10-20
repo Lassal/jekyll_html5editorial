@@ -1,0 +1,47 @@
+---
+layout: default
+title: Posts
+---
+
+<!-- Section -->
+  <section>
+    <header class="major">
+      <h2>Latest Posts</h2>
+    </header>
+    <div class="posts">
+      {% for post in paginator.posts limit:6 %}
+      <article>
+        <a href="{{ post.url }}" class="image"><img src="{{ post.head_image }}" alt="" /></a>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | truncatewords: 20 }}</p>
+        <ul class="actions">
+          <li><a href="{{ post.url }}" class="button">More</a></li>
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+ <!-- pagination -->
+  <ul class="pagination">
+    <li><a href="{{ paginator.previous_page_path }}" class="button {% unless paginator.previous_page %}disabled{% endunless %}">Prev</a></li>
+    <li><a href="/blog/index.html" class="page {% if 1 == paginator.page %}active{% endif %}">1</a></li>
+  {% if paginator.total_pages <= 10 %}
+    {% for p in (2..paginator.total_pages) %}
+       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+    {% endfor %}
+  {% else %}
+    {% for p in (2..4) %}
+       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+    {% endfor %}
+    <li><span>&hellip;</span></li>
+    {% assign startLimit =  paginator.total_pages %}
+    <!-- TODO: verificar esta secao pois nao consegui fazer uma subtracao no Liquid para definir o limite inferior -->
+    {% decrement startLimit %}
+    {% decrement startLimit %}
+    {% decrement startLimit %}
+    {% for p in (startLimit..paginator.total_pages) %}
+       <li><a href="/blog/page{{ p }}/index.html" class="page {% if p == paginator.page %}active{% endif %}">{{ p }}</a></li>
+    {% endfor %}
+  {% endif %}
+  <li><a href="{{ paginator.next_page_path }}" class="button {% unless paginator.next_page %}disabled{% endunless %}">Next</a></li>

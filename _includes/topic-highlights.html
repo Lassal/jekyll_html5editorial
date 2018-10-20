@@ -1,0 +1,16 @@
+								<section>
+									<header class="major">
+										<h2>Latests posts</h2>
+									</header>
+									<div class="mini-posts">
+										{% for post in site.posts limit:3 %}
+										<article>
+											<a href="{{ post.url }}" class="image"><img src="{{ post.head_image }}" alt="" /></a>
+											<p>{{ post.excerpt | truncate: 80 }}</p>
+										</article>
+										{% endfor %}
+									</div>
+									<ul class="actions">
+										<li><a href="/blog/index.html" class="button">More</a></li>
+									</ul>
+								</section>

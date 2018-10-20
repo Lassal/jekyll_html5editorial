@@ -1,0 +1,15 @@
+toc:
+    - page: Homepage
+      url: /index.html
+    - page: Sample Elements
+      url: /elements.html
+    - groupname: Articles
+      subsubfolderitems:
+        - page: Article A
+          url: /articles/artigoA.html
+        - page: Article B
+          url: /articles/artigoA.html
+        - page: Article C
+          url: /articles/artigoA.html
+    - page: posts
+      url: /blog/index.html
