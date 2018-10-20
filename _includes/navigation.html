@@ -10,11 +10,11 @@
 											   <span class="opener">{{ item.groupname }}</span>
  											   <ul>
 													 {% for subitem in item.subsubfolderitems %}
- 												     <li><a href="{{ subitem.url }}">{{ subitem.page }}</a></li>
+ 												     <li><a href="{{ subitem.url | relative_url }}">{{ subitem.page }}</a></li>
 													 {% endfor %}
  											   </ul>
 											 {% else %}
-                         <a href="{{ item.url }}">{{ item.page }}</a>
+                         <a href="{{ item.url | relative_url }}">{{ item.page }}</a>
 											 {% endif %}
 										 </li>
 										{% endfor %}
